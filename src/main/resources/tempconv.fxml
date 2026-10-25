@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tempController">
+   <children>
+      <BorderPane layoutX="316.0" layoutY="112.0" prefHeight="737.0" prefWidth="980.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <right>
+            <VBox alignment="CENTER" prefHeight="738.0" prefWidth="330.0" styleClass="anchorpane" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox id="historylabel" alignment="CENTER" prefHeight="125.0" prefWidth="338.0" styleClass="historylabel" stylesheets="@style.css">
+                     <children>
+                        <Label stylesheets="@style.css" text="History" textFill="WHITE">
+                           <font>
+                              <Font name="Baskerville Old Face" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox id="history" alignment="TOP_CENTER" prefHeight="607.0" prefWidth="338.0" styleClass="history" stylesheets="@style.css">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <ListView fx:id="historyList" editable="true" prefHeight="200.0" prefWidth="200.0" styleClass="history" stylesheets="@style.css" />
+                        <Label wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children></HBox>
+               </children>
+            </VBox>
+         </right>
+         <center>
+            <VBox alignment="CENTER" prefHeight="523.0" prefWidth="650.0" styleClass="anchorpane" stylesheets="@style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="169.0" prefWidth="650.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="143.0" prefWidth="270.0">
+                           <children>
+                              <Label text="%convertFrom">
+                                 <font>
+                                    <Font name="Baskerville Old Face" size="18.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="convertFrom" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="114.0">
+                           <children>
+                              <TextField fx:id="value" promptText="Insert value" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="249.0">
+                           <children>
+                              <Label stylesheets="@style.css" text="%convertTo">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="convertTo" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="54.0" prefWidth="650.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <Button fx:id="convert" mnemonicParsing="false" onAction="#convert" stylesheets="@style.css" text="Convert" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="%result">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="result">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+      <VBox alignment="CENTER" prefHeight="122.0" prefWidth="638.0" styleClass="history" stylesheets="@style.css">
+         <children>
+            <Label text="%temperatureConverter" textFill="WHITE">
+               <font>
+                  <Font name="Baskerville Old Face" size="36.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="languageChoice" prefWidth="150.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

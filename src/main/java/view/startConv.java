@@ -1,5 +1,6 @@
 package view;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 import controller.tempController;
 import datasource.MariaDBConnection;
@@ -22,7 +23,9 @@ public class startConv extends Application {
     public void start(Stage stage) throws IOException {
         MariaDBConnection.connect();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/tempconv.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("MessagesBundle");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/tempconv.fxml"), bundle);
         Parent root = fxmlLoader.load();
         controller = fxmlLoader.getController();
         stage.setTitle("Temperature converter");
