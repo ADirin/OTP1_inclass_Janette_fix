@@ -20,7 +20,7 @@
                <children>
                   <HBox id="historylabel" alignment="CENTER" prefHeight="125.0" prefWidth="338.0" styleClass="historylabel" stylesheets="@style.css">
                      <children>
-                        <Label stylesheets="@style.css" text="History" textFill="WHITE">
+                        <Label fx:id="historyHead" stylesheets="@style.css" text="%history" textFill="WHITE">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -49,27 +49,27 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="143.0" prefWidth="270.0">
                            <children>
-                              <Label text="%convertFrom">
+                              <Label fx:id="convFLabel" text="%convertFrom">
                                  <font>
                                     <Font name="Baskerville Old Face" size="18.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox fx:id="convertFrom" prefWidth="150.0" />
+                              <ChoiceBox fx:id="convertFrom" prefWidth="150.0" value="Celsius" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="114.0">
                            <children>
-                              <TextField fx:id="value" promptText="Insert value" />
+                              <TextField fx:id="value" promptText="%insertValue" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="249.0">
                            <children>
-                              <Label stylesheets="@style.css" text="%convertTo">
+                              <Label fx:id="convTLabel" stylesheets="@style.css" text="%convertTo">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox fx:id="convertTo" prefWidth="150.0" />
+                              <ChoiceBox fx:id="convertTo" prefWidth="150.0" value="Celsius" />
                            </children>
                         </VBox>
                      </children>
@@ -79,12 +79,12 @@
                         <Insets />
                      </VBox.margin>
                      <children>
-                        <Button fx:id="convert" mnemonicParsing="false" onAction="#convert" stylesheets="@style.css" text="Convert" />
+                        <Button fx:id="convert" mnemonicParsing="false" onAction="#convert" stylesheets="@style.css" text="%convert" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label text="%result">
+                        <Label fx:id="resultLabel" text="%result">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -105,12 +105,12 @@
       </BorderPane>
       <VBox alignment="CENTER" prefHeight="122.0" prefWidth="638.0" styleClass="history" stylesheets="@style.css">
          <children>
-            <Label text="%temperatureConverter" textFill="WHITE">
+            <Label fx:id="converterLabel" text="%temperatureConverter" textFill="WHITE">
                <font>
                   <Font name="Baskerville Old Face" size="36.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="languageChoice" prefWidth="150.0" />
+            <ChoiceBox fx:id="languageChoice" onAction="#changeLanguage" prefWidth="150.0" value="English" />
          </children>
       </VBox>
    </children>

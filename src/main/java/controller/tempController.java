@@ -3,7 +3,9 @@ package controller;
 import dao.temperatureRecordsDAO;
 import entity.temperatureRecord;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import java.sql.Timestamp;
 import java.time.*;
@@ -41,11 +43,27 @@ public class tempController {
     @FXML
     public ChoiceBox languageChoice;
 
+    @FXML
+    public Label historyHead;
+
+    @FXML
+    public Label convFLabel;
+
+    @FXML
+    public Label convTLabel;
+
+    @FXML
+    public Label resultLabel;
+
+    @FXML
+    public Label converterLabel;
+
+
     public void initialize() {
         languageChoice.setItems(cb.getItems());
+        //todo: vaihda näihin että kielen perusteella tulevat samoin käännöksien jutut
         convertTo.getItems().addAll("Celsius", "Fahrenheit", "Kelvin");
         convertFrom.getItems().addAll("Celsius", "Fahrenheit", "Kelvin");
-        consoleVersion();
     }
 
     public void getConvertValues() {
@@ -100,6 +118,39 @@ public class tempController {
         }
     }
 
+    @FXML
+    public void changeLanguage(ActionEvent e) throws Exception{
+        int lang = languageChoice.getSelectionModel().getSelectedIndex();
+        switch (lang) {
+            case 0:
+                locale = new Locale("en", "US");
+            break;
+            case 1:
+                locale = new Locale("fi", "FI");
+                break;
+            case 2:
+                locale = new Locale("ja", "JP");
+                break;
+            case 3:
+                locale = new Locale("sv", "SE");
+                break;
+            default:
+                System.out.println("Invalid language, defaulting to English.");
+        }
+
+        ResourceBundle rs = ResourceBundle.getBundle("MessagesBundle", locale);
+        convFLabel.setText(rs.getString("convertFrom"));
+        convertFrom.setItems(FXCollections.observableArrayList(rs.getString("convertList").split(",")));
+        convTLabel.setText(rs.getString("convertTo"));
+        convertTo.setItems(FXCollections.observableArrayList(rs.getString("convertList").split(",")));
+        historyHead.setText(rs.getString("history"));
+        value.setPromptText(rs.getString("prompt2"));
+        convert.setText(rs.getString("convert"));
+        resultLabel.setText(rs.getString("result"));
+        converterLabel.setText(rs.getString("converter"));
+        updateHistory();
+    }
+
     public void consoleVersion(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select language: 1. English, 2. Suomeksi, 3. Sverige, 4. Nihongo");
@@ -123,6 +174,8 @@ public class tempController {
 
             default:
                 System.out.println("Invalid language, defaulting to English.");
+
+
         }
 
         ResourceBundle rs = ResourceBundle.getBundle("MessagesBundle", locale);
