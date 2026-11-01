@@ -19,7 +19,7 @@ public class tempController {
     temperatureRecord record;
     temperatureRecordsDAO dao = new temperatureRecordsDAO();
     Locale locale = Locale.getDefault();
-    final ChoiceBox cb = new ChoiceBox(FXCollections.observableArrayList("English", "Suomeksi", "日本語で" , "Svenska"));
+    final ChoiceBox cb = new ChoiceBox(FXCollections.observableArrayList("English", "Suomeksi", "日本語で" , "Svenska", "بالعربية"));
 
 
     @FXML
@@ -133,6 +133,9 @@ public class tempController {
                 break;
             case 3:
                 locale = new Locale("sv", "SE");
+                break;
+            case 4:
+                locale = new Locale("ar", "AE");
                 break;
             default:
                 System.out.println("Invalid language, defaulting to English.");
