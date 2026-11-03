@@ -1,5 +1,4 @@
-import controller.TemperatureConverter;
-import view.startConv;
+package view;
 
 public class Main {
     public static void main(String[] args) {
